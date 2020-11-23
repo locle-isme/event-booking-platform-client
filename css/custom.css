@@ -1,0 +1,198 @@
+.event {
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.4) !important;
+}
+
+.event:hover, .ticket:hover:not(.disabled) {
+    cursor: pointer;
+    transition: 300ms;
+    transform: scale(1.01);
+    box-shadow: 1px 1px 5px 1px rgba(0, 125, 255, 0.4) !important;
+}
+
+.ticket:hover {
+
+}
+
+
+.alert {
+    position: fixed;
+    padding: 10px 15px;
+    left: 30px;
+    top: 70px;
+    animation: left2right 1s ease-in-out;
+}
+
+@keyframes left2right {
+    from {
+        left: -300px;
+    }
+}
+
+.right2left-enter-active, .right2left-leave-active {
+    transition: all 1s;
+}
+
+.right2left-enter, .right2left-leave-to {
+    transform: translateX(-300px);
+}
+
+
+.logo {
+    font-size: 24px;
+    font-weight: 500;
+    /*color: #223de5;*/
+    color: #fff;
+}
+
+.logo:hover {
+    color: #ffffff !important;
+}
+
+.blank-time {
+    width: 355px;
+}
+
+.time {
+    font-weight: 700;
+    user-select: none;
+}
+
+.channel, .room {
+    width: 170px;
+    margin: 5px;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+}
+
+.channel {
+    margin-right: 0px;
+    background: #fb2dc5;
+    font-weight: 700;
+}
+
+.room {
+    background: #76af8f;
+    font-weight: 500;
+}
+
+.session {
+    position: absolute;
+    margin: 5px 0px;
+    border: 4px black solid;
+    padding: 6px 4px;
+    border-radius: 4px;
+}
+
+.session:hover {
+    background: #1c7430;
+    color: #fff !important;
+}
+
+.session.registered {
+    border-color: #1c7430;
+    color: #1c7430;
+}
+
+
+.ticket {
+    margin: 10px 5px;
+    border: 2px #ffffff solid;
+    padding: 20px 10px;
+    border-radius: 10px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+
+.ticket:first-child {
+    margin-left: 0;
+}
+
+.ticket:last-child {
+    margin-right: 0;
+}
+
+.ticket.disabled {
+    background: rgba(108, 117, 125, 0.5);
+    border-color: rgba(108, 117, 125, 0.5);
+    color: #6c757d;
+    cursor: not-allowed;
+}
+
+.detail-cost {
+
+    font-weight: 500;
+    width: 220px;
+    margin: 8px 0px;
+}
+
+.custom-control-label {
+    font-weight: 500;
+}
+
+.session-description {
+    background: rgb(99 41 107);
+    margin: 10px 0px;
+}
+
+.session-w {
+    width: 100px;
+    font-weight: 500;
+}
+
+a.event-name, a.session, a.logo, a.speaker, a.register {
+    text-decoration: none;
+}
+
+.title {
+    padding: 10px 5px;
+    border-radius: 4px;
+}
+
+.title-session {
+    background: #355e71;
+}
+
+.custom-control-label {
+    cursor: pointer;
+}
+
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before, .custom-radio .custom-control-input:checked ~ .custom-control-label::before {
+    background: #f52929;
+}
+
+#register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+}
+
+#back-button{
+    background: #248290;
+    border-color: #248290;
+    color: #fff;
+}
+
+.session-joined {
+    cursor: pointer;
+    color: rgba(16, 117, 175, 0.7);
+}
+
+.session-joined:hover {
+    color: #1075af;
+}
+
+
+.no-account {
+    display: inline-flex;
+    margin-top: 5px;
+    margin-left: 10px;
+    text-align: center;
+}
