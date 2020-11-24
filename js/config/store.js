@@ -39,9 +39,9 @@ const store = {
     setAuth({lastname, firstname, token}) {
         const {auth} = this;
         const fullName =`${lastname}  ${firstname}`;
-        auth.fullName = fullName;
+        auth.fullName = firstname;
         auth.token = token;
-        localStorage.setItem(FULLNAME, fullName);
+        localStorage.setItem(FULLNAME, firstname);
         localStorage.setItem(TOKEN, token);
     },
 

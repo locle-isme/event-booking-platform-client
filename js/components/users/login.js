@@ -29,15 +29,15 @@ const UserLogin = {
     data() {
         return {
             form: {
-                username: 'attendee11',
-                password: '12345678A'
+                username: '',
+                password: ''
             },
         }
     },
 
     props: {},
     mounted() {
-        console.log(this.$route);
+        //console.log(this.$route);
     },
     methods: {
         /**
@@ -46,7 +46,7 @@ const UserLogin = {
         login() {
             API.post('/login', this.form)
                 .then(({data}) => {
-                    console.log(data);
+                    //console.log(data);
                     store.setToast({type: 'success', message: 'Login success'});
                     app.$emit('set.logout', false);
                     store.setAuth(data);

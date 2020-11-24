@@ -56,7 +56,7 @@ const SpeakerDetail = {
 
     methods: {
         init(){
-            API.get(`/speaker/${this.speakerId}/`)
+            API.get(`/speaker/${this.speakerId}`)
                 .then(({data}) => {
                     this.speaker = data.speaker;
                     if (!this.speaker) this.$router.push({path: '/error/404'}); //if unavailable session redirect to error 404 page

@@ -62,13 +62,13 @@ const UserRegister = {
     data() {
         return {
             form: {
-                lastname: 'abc',
-                firstname: 'xyz',
-                username: 'attendee1',
-                email: 'abcydsfs@gmail.com',
-                password: '12345678A'
+                lastname: '',
+                firstname: '',
+                username: '',
+                email: '',
+                password: ''
             },
-            rePassword: '12345678A',
+            rePassword: '',
             arrayError: {}
 
         }

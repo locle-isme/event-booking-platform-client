@@ -69,13 +69,15 @@ const EventAgenda = {
                     //console.log(error);
                 })
                 .then(() => {
-                    return API.get(`/registrations?token=${store.getAuth().token}`);
+                    if (store.isAuth()) {
+                        return API.get(`/registrations?token=${store.getAuth().token}`);
+                    } else {
+                        let obj = {};
+                        return {data: {registrations: []}};
+                    }
                 })
                 .then(({data}) => {
                     this.registration = data.registrations.find(r => r.event.id == this.event.id);
-                })
-                .catch((error) => {
-                    //console.log(error);
                 })
         },
         /**
