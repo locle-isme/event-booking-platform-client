@@ -1,5 +1,5 @@
 ## Edit URL API in path:
-`config/config.js`
+`/js/config/config.js`
 ## Demo account
 <pre>
 u: attendee1 | p: Abcdef1234
