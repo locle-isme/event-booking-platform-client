@@ -8,10 +8,13 @@ Vue.filter('date', (d) => {
 })
 
 Vue.filter('date_time', (d) => {
-    return new Date(d).toLocaleTimeString('vi-VN',
+    return new Date(d).toLocaleTimeString('en-US',
         {
             hour: '2-digit',
-            minute: '2-digit'
+            minute: '2-digit',
+            day: '2-digit',
+            month: 'long',
+            year: 'numeric'
         })
 })
 
