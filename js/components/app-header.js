@@ -1,14 +1,44 @@
 const AppHeader = {
     template: `
-         <nav class="bg-dark text-light d-flex justify-content-between align-items-center py-2 px-3 shadow-lg fixed-top" style="border-bottom: 2px rgba(62,62,62,0.5) solid">
-        <router-link :to="{name:'event.index'}" class="logo">Event Booking Platform</router-link>
-        <div v-if="store.isAuth()">
-             <span class="mx-2">{{store.getAuth().fullName}}</span>
-            <button class="btn btn-outline-danger" @click="logout">Logout</button>
-        </div>
-        <div v-else><router-link :to="{name:'user.login'}" class="btn btn-outline-primary">Login</router-link></div>
-    </nav>
-
+         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" style="border-bottom: 2px rgba(62,62,62,0.5) solid">
+    <router-link :to="{name:'event.index'}" class="navbar-brand" href="">Event Booking Platform</router-link>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <router-link :to="{name:'event.index'}" class="nav-link" href="#">Home</router-link>
+            </li>
+<!--            <li class="nav-item">-->
+<!--                <a class="nav-link" href="#">Tin tức</a>-->
+<!--            </li>-->
+<!--            <li class="nav-item">-->
+<!--                <a class="nav-link" href="#">Về chúng tôi</a>-->
+<!--            </li>-->
+<!--            <li class="nav-item">-->
+<!--                <a class="nav-link" href="#">Liên hệ</a>-->
+<!--            </li>-->
+        </ul>
+        <ul v-if="store.isAuth()" class="navbar-nav">
+            <li class="nav-item dropdown">
+                <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Hi {{store.getAuth().fullName}}
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
+                    <div class="dropdown-item">Registration</div>
+                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-item" @click="logout">Đăng xuất</div>
+                </div>
+            </li>
+        </ul>
+        
+        <router-link v-else :to="{name:'user.login'}" class="btn btn-outline-primary">Logout</router-link>
+    
+    </div>
+</nav>
 `,
     data() {
         return {}
@@ -24,7 +54,7 @@ const AppHeader = {
             API.post(`/logout?token=${store.getAuth().token}`).then(() => {
                 app.$emit('set.logout', true);
                 store.removeAuth();
-                store.setToast({type:'success', message:'Logout success'})
+                store.setToast({type: 'success', message: 'Logout success'})
                 this.$router.push({name: 'user.login'}).catch();
 
             })
@@ -32,4 +62,4 @@ const AppHeader = {
     },
 
     computed: {}
-}
+};

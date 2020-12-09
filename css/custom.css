@@ -196,3 +196,7 @@ a.event-name, a.session, a.logo, a.speaker, a.register {
     margin-left: 10px;
     text-align: center;
 }
+
+.dropdown-item{
+    cursor: pointer;
+}
