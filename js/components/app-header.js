@@ -30,7 +30,7 @@ const AppHeader = {
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
                     <div class="dropdown-item">Registration</div>
                     <div class="dropdown-divider"></div>
-                    <div class="dropdown-item" @click="logout">Đăng xuất</div>
+                    <div class="dropdown-item" @click="logout">Logout</div>
                 </div>
             </li>
         </ul>
