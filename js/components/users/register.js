@@ -1,60 +1,63 @@
-
 const UserRegister = {
-    template: `<div class="card">
-    <div class="card-body">
-        <form>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="inputLastName">Last name</label>
-                    <input v-model="form.lastname" :class="{'is-invalid': arrayError.lastname, 'form-control': true}"
-                           type="text" id="inputLastName" placeholder="Last name">
-                    <div v-if="arrayError.lastname" class="invalid-feedback"> {{arrayError.lastname}}.</div>
+    template: `<div class="col-md-6 ml-auto mr-auto">
+    <div class="card">
+        <div class="card-body">
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputLastName">Lastname</label>
+                        <input v-model="form.lastname"
+                               :class="{'is-invalid': arrayError.lastname, 'form-control': true}"
+                               type="text" id="inputLastName" placeholder="Enter lastname">
+                        <div v-if="arrayError.lastname" class="invalid-feedback"> {{arrayError.lastname}}.</div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputFirstName">Firstname</label>
+                        <input v-model="form.firstname" type="text"
+                               :class="{'is-invalid': arrayError.firstname, 'form-control': true}" id="inputFirstName"
+                               placeholder="Enter firstname">
+                        <div v-if="arrayError.firstname" class="invalid-feedback"> {{arrayError.firstname}}.</div>
+                    </div>
                 </div>
-                <div class="form-group col-md-6">
-                    <label for="inputFirstName">First name</label>
-                    <input v-model="form.firstname" type="text"
-                           :class="{'is-invalid': arrayError.firstname, 'form-control': true}" id="inputFirstName"
-                           placeholder="First name">
-                    <div v-if="arrayError.firstname" class="invalid-feedback"> {{arrayError.firstname}}.</div>
+                <div class="form-group">
+                    <label for="inputUsername">Username</label>
+                    <input v-model="form.username" type="text"
+                           :class="{'is-invalid': arrayError.username, 'form-control': true}" id="inputUsername"
+                           placeholder="Enter username">
+                    <div v-if="arrayError.username" class="invalid-feedback"> {{arrayError.username}}.</div>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="inputUsername">Username</label>
-                <input v-model="form.username" type="text"
-                       :class="{'is-invalid': arrayError.username, 'form-control': true}" id="inputUsername"
-                       placeholder="Username">
-                <div v-if="arrayError.username" class="invalid-feedback"> {{arrayError.username}}.</div>
-            </div>
 
-            <div class="form-group">
-                <label for="inputEmail">Email</label>
-                <input v-model="form.email" type="email"
-                       :class="{'is-invalid': arrayError.email, 'form-control': true}" id="inputEmail"
-                       placeholder="Email">
-                <div v-if="arrayError.email" class="invalid-feedback"> {{arrayError.email}}.</div>
-            </div>
+                <div class="form-group">
+                    <label for="inputEmail">Email</label>
+                    <input v-model="form.email" type="email"
+                           :class="{'is-invalid': arrayError.email, 'form-control': true}" id="inputEmail"
+                           placeholder="Enter email">
+                    <div v-if="arrayError.email" class="invalid-feedback"> {{arrayError.email}}.</div>
+                </div>
 
-            <div class="form-group">
-                <label for="inputPassword">Password</label>
-                <input v-model="form.password" type="password"
-                       :class="{'is-invalid': arrayError.password, 'form-control': true}" id="inputPassword"
-                       placeholder="Password">
-                <div v-if="arrayError.password" class="invalid-feedback"> {{arrayError.password}}.</div>
-            </div>
-            <div class="form-group">
-                <label for="inputRePassword">Re-enter password</label>
-                <input v-model="rePassword" type="password"
-                       :class="{'is-invalid': arrayError.rePassword, 'form-control': true}" id="inputRePassword"
-                       placeholder="Re-enter Password">
-                <div v-if="arrayError.rePassword" class="invalid-feedback"> {{arrayError.rePassword}}.</div>
-            </div>
+                <div class="form-group">
+                    <label for="inputPassword">Password</label>
+                    <input v-model="form.password" type="password"
+                           :class="{'is-invalid': arrayError.password, 'form-control': true}" id="inputPassword"
+                           placeholder="Enter password">
+                    <div v-if="arrayError.password" class="invalid-feedback"> {{arrayError.password}}.</div>
+                </div>
+                <div class="form-group">
+                    <label for="inputRePassword">Re-enter password</label>
+                    <input v-model="rePassword" type="password"
+                           :class="{'is-invalid': arrayError.rePassword, 'form-control': true}" id="inputRePassword"
+                           placeholder="Enter re-enter password">
+                    <div v-if="arrayError.rePassword" class="invalid-feedback"> {{arrayError.rePassword}}.</div>
+                </div>
 
-            <button @click.prevent="register()" type="submit" class="btn btn-primary">Sign up</button>
-            <div class="no-account">Already have an account?&nbsp;<router-link :to="{name:'user.login'}" class="register">
-                Sign in!
-            </router-link>
-            </div>
-        </form>
+                <button @click.prevent="register()" type="submit" class="btn btn-primary">Sign up</button>
+                <div class="no-account">Already have an account?&nbsp;<router-link :to="{name:'user.login'}"
+                                                                                   class="register">
+                    Sign in!
+                </router-link>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
     

@@ -1,13 +1,14 @@
 const EventAgenda = {
     template:
         `
+<div class="col">
 <div class="card shadow-lg">
     <div class="card-body m-2">
         <div class="row justify-content-between">
             <div class="h4 text-light title" :class="{'bg-success': checkRegistered, 'bg-dark': !checkRegistered}">{{event.name}}</div>
-            <router-link :to="{name:'event.registration', params: {oslug: oslug, eslug: eslug }}"
+            <div class="pt-3"><router-link :to="{name:'event.registration', params: {oslug: oslug, eslug: eslug }}"
                          class="btn btn-outline-primary" id="register">Register
-            </router-link>
+            </router-link></div>
         </div>
         <div class="row mt-3">
             <div class="blank-time"></div>
@@ -36,6 +37,7 @@ const EventAgenda = {
             </div>
         </div>
     </div>
+</div>
 </div>
     `,
     data() {

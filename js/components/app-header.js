@@ -28,14 +28,14 @@ const AppHeader = {
                     Hi {{store.getAuth().fullName}}
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
-                    <div class="dropdown-item">Registration</div>
+                    <router-link :to="{name:'history.list'}" class="dropdown-item">Registrations</router-link>
                     <div class="dropdown-divider"></div>
                     <div class="dropdown-item" @click="logout">Logout</div>
                 </div>
             </li>
         </ul>
         
-        <router-link v-else :to="{name:'user.login'}" class="btn btn-outline-primary">Logout</router-link>
+        <router-link v-else :to="{name:'user.login'}" class="btn btn-outline-primary text-light mr-4">Login</router-link>
     
     </div>
 </nav>
@@ -56,7 +56,11 @@ const AppHeader = {
                 store.removeAuth();
                 store.setToast({type: 'success', message: 'Logout success'})
                 this.$router.push({name: 'user.login'}).catch();
-
+            }).catch(() => {
+                app.$emit('set.logout', true);
+                store.removeAuth();
+                store.setToast({type: 'success', message: 'Logout success'})
+                this.$router.push({name: 'user.login'}).catch();
             })
         }
     },

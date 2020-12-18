@@ -1,6 +1,8 @@
 const SessionDetail = {
     template:
-        `<div class="card shadow-lg">
+        `
+<div class="col">
+<div class="card shadow-lg">
     <div class="card-body">
         <div class="d-flex">
             <div class="h4 text-light title title-session">{{session.title}}</div>
@@ -34,13 +36,10 @@ const SessionDetail = {
             <div class="session-w">Cost:</div>
             <div>{{session.cost}}.-</div>
         </div>
-        <div class="d-flex justify-content-center">
-                     <router-link :to="{name:'event.agenda', params: {oslug: oslug, eslug: eslug }}" class="btn" id="back-button">
-                     <i class="fa fa-arrow-left" aria-hidden="true"></i>
-Back to event</router-link>
-
-</div>
     </div>
+</div>
+<router-link :to="{name:'event.agenda', params: {oslug: oslug, eslug: eslug }}" class="btn" id="back-button">
+                     <i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp; Back to event</router-link>
 </div>
         
         `,

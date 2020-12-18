@@ -1,5 +1,6 @@
 const UserLogin = {
-    template: `<div class="card">
+    template: `
+    <div class="col-md-6 ml-auto mr-auto"><div class="card">
     <div class="card-body">
         <form>
                         
@@ -23,8 +24,7 @@ const UserLogin = {
 
         </form>
     </div>
-</div>
-    
+</div></div>
     `,
     data() {
         return {

@@ -1,6 +1,6 @@
 const EventIndex = {
     template: `    
-    <div>
+    <div class="col">
         <div v-for="event in events" class="card mb-4 event">
             <div class="card-body">
                 <div class="d-flex flex-column">

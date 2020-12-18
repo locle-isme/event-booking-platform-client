@@ -1,27 +1,42 @@
 const EventRegistration = {
-    template: `<div class="card shadow-lg">
+    template: `
+<div class="col">
+<div class="card shadow-lg">
     <div class="card-body">
         <div class="d-flex mt-2 mb-2">
             <div class="h4 bg-dark text-light title">{{event.name}}</div>
+
         </div>
         <div class="d-flex">
-            <div v-for="(ticket, index) in tickets"  @click="selectTicket(index)" :key="ticket.id" class="d-flex flex-grow-1 justify-content-between ticket"
+            <div v-for="(ticket, index) in tickets" @click="selectTicket(index)" :key="ticket.id"
+                 class="d-flex flex-grow-1 justify-content-between ticket"
                  :class="{disabled: !ticket.available}">
-                <div class="custom-control custom-radio">
-                    <input ref="listItem" v-model="form.ticket_id" :value="ticket.id" type="radio" :id="'ticket' + ticket.id"
-                           name="ticket_id" class="custom-control-input" :disabled="!ticket.available">
-                    <label class="custom-control-label" :for="'ticket' + ticket.id">{{ticket.name}}</label>
-                    <div class="ticket-description mt-2">{{ticket.description}}</div>
+                <div class="form-check form-check-radio">
+                    <label class="form-check-label" :for="'ticket' + ticket.id">
+                        <input ref="listItem" v-model="form.ticket_id" :value="ticket.id" type="radio"
+                               :id="'ticket' + ticket.id"
+                               name="ticket_id" class="form-check-input" :disabled="!ticket.available">
+                        {{ticket.name}}
+                        <span class="circle">
+                            <span class="check"></span>
+                         </span>
+                        <div class="ticket-description mt-2">{{ticket.description}}</div>
                 </div>
+                </label>
                 <div class="ticket-cost">{{ticket.cost}}.-</div>
             </div>
         </div>
         <div class="d-flex flex-column mt-4">
             <div class="h5">Select additional you want to book:</div>
-            <div v-for="session in workshops" :key="session.id" class="custom-control custom-checkbox mt-2">
-                <input v-model="form.session_ids" :value="session.id" type="checkbox" class="custom-control-input"
-                       :id="'ss' + session.id">
-                <label class="custom-control-label" :for="'ss' + session.id">{{session.title}}</label>
+            <div v-for="session in workshops" :key="session.id" class="form-check mt-2">
+                <label class="form-check-label" :for="'ss' + session.id">
+                    <input v-model="form.session_ids" :value="session.id" type="checkbox" class="form-check-input"
+                           :id="'ss' + session.id">
+                    {{session.title}}
+                    <span class="form-check-sign">
+                        <span class="check"></span>
+                    </span>
+                </label>
             </div>
 
         </div>
@@ -43,6 +58,7 @@ const EventRegistration = {
             <button class="btn btn-outline-danger" :disabled="!form.ticket_id" @click="purchase">Purchase</button>
         </div>
     </div>
+</div>
 </div>
     
     `,

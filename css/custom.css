@@ -9,16 +9,12 @@
     box-shadow: 1px 1px 5px 1px rgba(0, 125, 255, 0.4) !important;
 }
 
-.ticket:hover {
-
-}
-
 
 .alert {
     position: fixed;
     padding: 10px 15px;
     left: 30px;
-    top: 70px;
+    top: 80px;
     animation: left2right 1s ease-in-out;
 }
 
@@ -87,6 +83,7 @@
     border: 4px black solid;
     padding: 6px 4px;
     border-radius: 4px;
+    transition: 300ms;
 }
 
 .session:hover {
@@ -105,7 +102,7 @@
     border: 2px #ffffff solid;
     padding: 20px 10px;
     border-radius: 10px;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.4);
     cursor: pointer;
 }
 
@@ -124,6 +121,11 @@
     color: #6c757d;
     cursor: not-allowed;
 }
+
+.ticket.disabled label{
+    color: #6c757d !important;
+}
+
 
 .detail-cost {
 
@@ -174,7 +176,7 @@ a.event-name, a.session, a.logo, a.speaker, a.register {
     font-weight: 600;
 }
 
-#back-button{
+#back-button {
     background: #248290;
     border-color: #248290;
     color: #fff;
@@ -197,6 +199,13 @@ a.event-name, a.session, a.logo, a.speaker, a.register {
     text-align: center;
 }
 
-.dropdown-item{
+.dropdown-item {
     cursor: pointer;
+}
+
+
+@media (min-width: 576px) {
+    .ticket{
+        width: 100% !important;
+    }
 }

@@ -47,6 +47,26 @@ const router = new VueRouter({
             }
         },
         {
+            path: '/history',
+            component: HistoryList,
+            name: 'history.list',
+            props: true,
+            meta: {
+                auth: true,
+                title: 'History'
+            }
+        },
+        {
+            path: '/history/event/:event_id',
+            component: HistoryDetail,
+            name: 'history.detail',
+            props: true,
+            meta: {
+                auth: true,
+                title: 'Detail registration'
+            }
+        },
+        {
             path: '/speakers/:speakerId',
             component: SpeakerDetail,
             name: 'speaker.detail',
@@ -69,12 +89,16 @@ router.beforeEach((to, from, next) => {
     //
     // }
     if (to.meta.auth) {
+        const LIST_AUTH_CONTINUE = ['history.list', 'history.detail'];
         if (to.name == 'user.login' && store.isAuth()) {
             next({name: 'event.index'});
         } else if (to.name == 'user.register' && store.isAuth()) {
             next({name: 'event.index'});
         } else if (to.name == 'event.registration' && !store.isAuth()) {
             store.setToast({type: 'danger', message: 'You must login to register'});
+            next({name: 'user.login'});
+        } else if (LIST_AUTH_CONTINUE.indexOf(to.name) > -1 && !store.isAuth()) {
+            store.setToast({type: 'danger', message: 'You must login to continue'});
             next({name: 'user.login'});
         } else {
             next();
