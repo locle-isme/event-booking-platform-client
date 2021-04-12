@@ -1,3 +1,3 @@
 const API = axios.create({
-    baseURL: 'http://localhost/da2/event-management-admin/api/v1/'
+    baseURL: 'http://localhost:8000/api/v1/'
 })

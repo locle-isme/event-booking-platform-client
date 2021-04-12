@@ -13,11 +13,11 @@ const SessionDetail = {
         <div class="d-flex my-2">
             <div class="session-w">Speaker:</div>
             <div class="text-capitalize" v-if="session.speaker.length !== 0">
-                <template v-for="speaker in session.speaker">
-                    <router-link :to="{name:'speaker.detail', params: { speakerId: speaker.id.toString() }}"
-                                 class="speaker" :key="speaker.id">{{speaker.name}}
-                    </router-link>
-                </template>
+<!--                <template v-for="speaker in session.speaker">-->
+<!--                    <router-link :to="{name:'speaker.detail', params: { speakerId: speaker.id.toString() }}"-->
+<!--                                 class="speaker" :key="speaker.id">{{speaker.name}}-->
+<!--                    </router-link>-->
+<!--                </template>-->
             </div>
         </div>
         <div class="d-flex mb-2">
@@ -69,7 +69,7 @@ const SessionDetail = {
             API.get(`/organizers/${this.oslug}/events/${this.eslug}`)
                 .then(({data}) => {
                     this.session = data.channels.map(channel => channel.rooms.map(room => room.sessions)).flat(Infinity).find(s => s.id == this.sessionId);
-                    //console.log(this.session);
+                    console.log(this.session);
                     if (!this.session) this.$router.push({path: '/error/404'}); //if unavailable session redirect to error 404 page
                 })
                 .catch((error) => {

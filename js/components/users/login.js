@@ -5,14 +5,14 @@ const UserLogin = {
         <form>
                         
             <div class="form-group">
-                <label for="inputUsername">Username</label>
+<!--                <label for="inputUsername">Username</label>-->
                 <input v-model="form.username" type="text" class="form-control" id="inputUsername"
                        placeholder="Username">
             </div>
 
 
             <div class="form-group">
-                <label for="inputPassword">Password</label>
+<!--                <label for="inputPassword">Password</label>-->
                 <input v-model="form.password" type="password" class="form-control" id="inputPassword"
                        placeholder="Password">
             </div>

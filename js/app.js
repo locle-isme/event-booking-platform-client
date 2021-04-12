@@ -18,6 +18,11 @@ Vue.filter('date_time', (d) => {
         })
 })
 
+Vue.filter('error', (errors) => {
+    return `${errors[0]}`;
+})
+
+
 const app = new Vue({
     router,
     data() {

@@ -95,7 +95,7 @@ router.beforeEach((to, from, next) => {
         } else if (to.name == 'user.register' && store.isAuth()) {
             next({name: 'event.index'});
         } else if (to.name == 'event.registration' && !store.isAuth()) {
-            store.setToast({type: 'danger', message: 'You must login to register'});
+            store.setToast({type: 'danger', message: 'You must login to join this event'});
             next({name: 'user.login'});
         } else if (LIST_AUTH_CONTINUE.indexOf(to.name) > -1 && !store.isAuth()) {
             store.setToast({type: 'danger', message: 'You must login to continue'});
