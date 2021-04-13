@@ -204,6 +204,8 @@ a.event-name, a.session, a.logo, a.speaker, a.register {
 }
 
 
+
+
 @media (min-width: 576px) {
     .ticket{
         width: 100% !important;

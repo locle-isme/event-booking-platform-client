@@ -2,7 +2,7 @@ const SpeakerDetail = {
     template:
         `<div class="col">
     <div class="row">
-        <div class="col-3"><img :src="'data:image/png;base64,' + speaker.avatar" class="img-thumbnail" alt=""></div>
+        <div class="col-3"><img :src="speaker.avatar" class="img-thumbnail" alt=""></div>
         <div class="col-9">
             <div class="card shadow-lg">
                 <div class="card-body">
@@ -14,11 +14,11 @@ const SpeakerDetail = {
                         <div>{{speaker.name}}</div>
                     </div>
                     <div class="d-flex mb-2">
-                        <div class="session-w">Link:</div>
-                        <a :href="speaker.link">{{speaker.link}}</a>
+                        <div class="session-w">Social linking:</div>
+                        <a target="_blank" :href="speaker.social_linking">{{speaker.social_linking}}</a>
                     </div>
                     <div class="d-flex session-description text-light title">
-                        {{speaker.info}}
+                        {{speaker.description}}
                     </div>
                     <div class="d-flex mb-2">
                         <div class="session-w">Sessions joined:</div>
@@ -57,10 +57,10 @@ const SpeakerDetail = {
     },
 
     methods: {
-        init(){
-            API.get(`/speaker/${this.speakerId}`)
+        init() {
+            API.get(`/speakers/${this.speakerId}`)
                 .then(({data}) => {
-                    this.speaker = data.speaker;
+                    this.speaker = data;
                     if (!this.speaker) this.$router.push({path: '/error/404'}); //if unavailable session redirect to error 404 page
                 })
                 .catch((error) => {
