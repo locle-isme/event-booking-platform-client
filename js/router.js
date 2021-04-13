@@ -21,7 +21,7 @@ const router = new VueRouter({
             }
         },
         {
-            path: '/organizers/:oslug/events/:eslug/session/:sessionId',
+            path: '/session/:sessionId',
             name: 'session.detail',
             component: SessionDetail,
             props: true

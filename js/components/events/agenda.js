@@ -28,7 +28,7 @@ const EventAgenda = {
                     </div>
                     <div class="d-flex position-relative flex-grow-1">
                         <router-link v-for="session in room.sessions" :key="session.id"
-                                     :to="{name:'session.detail', params: {oslug: oslug, eslug: eslug, sessionId: session.id.toString() }}"
+                                     :to="{name:'session.detail', params: {sessionId: session.id.toString() }}"
                                      class="session text-truncate" :style="setStyle(session)" :title="session.title"
                                      :class="{registered: isRegistered(session)}">{{session.title}}
                         </router-link>

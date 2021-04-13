@@ -39,7 +39,7 @@ const SessionDetail = {
             </div>
         </div>
     </div>
-    <router-link :to="{name:'event.agenda', params: {oslug: oslug, eslug: eslug }}" class="btn" id="back-button">
+    <router-link :to="{name:'event.agenda', params: {oslug: session.organizer_slug, eslug: session.event_slug }}" class="btn" id="back-button">
         <i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp; Back to event
     </router-link>
 </div>
@@ -61,13 +61,12 @@ const SessionDetail = {
     },
 
     props: {
-        oslug: String,
-        eslug: String,
         sessionId: String,
     },
 
     methods: {
         init() {
+            /* get detail thong qua event detail
             API.get(`/organizers/${this.oslug}/events/${this.eslug}`)
                 .then(({data}) => {
                     this.session = data.channels.map(channel => channel.rooms.map(room => room.sessions)).flat(Infinity).find(s => s.id == this.sessionId);
@@ -77,19 +76,21 @@ const SessionDetail = {
                 .catch((error) => {
                     console.log(error);
                 })
-        }
+            */
+
+            API.get(`/sessions/${this.sessionId}`)
+                .then(({data}) => {
+                    this.session = data;
+                })
+                .catch(({response}) => {
+                    console.log(response.data);
+                    this.$router.push({path: '/error/404'}); //if unavailable session redirect to error 404 page
+                });
+        },
     },
 
     computed: {},
     watch: {
-        oslug() {
-            this.init();
-        },
-
-        eslug() {
-            this.init();
-        },
-
         sessionId() {
             this.init();
         }
