@@ -38,12 +38,15 @@ const HistoryDetail = {
                         <td>Additional workshops</td>
                         <td colspan="4">
                         <ul style="list-style-type: none; margin: 0px; padding: 0px;">
+                        <div v-if="workshops.length > 0">
                         <template v-for="session in workshops" :key="session.id">
                                 <router-link class="session-joined font-weight-bold" tag="li"
                                              :to="{name:'session.detail', params: {oslug: organizer.slug, eslug: event.slug, sessionId: session.id.toString() }}">
                                     {{session.title}}
                                 </router-link>
                             </template>
+</div>
+<div v-else>(Empty)</div>
                         </ul>
                         </td>
                     </tr>

@@ -96,7 +96,7 @@ const EventRegistration = {
                     this.event = data;
                     this.tickets = data.tickets;
                     this.workshops = data.channels.map(channel => channel.rooms.map(room => room.sessions.filter(s => s.type == 'workshop'))).flat(Infinity);
-
+                    this.checkAvailable();
                 })
                 .catch((error) => {
                     this.$router.push({path: '/error/404'});
@@ -123,12 +123,20 @@ const EventRegistration = {
                 this.$refs.listItem[index].checked = true;
                 this.form.ticket_id = this.$refs.listItem[index].value;
             }
+        },
+
+        checkAvailable(){
+            let currentDay = new Date();
+            let eventDate = new Date(this.event.date);
+            if (eventDate < currentDay) {
+                this.$router.push({name: 'event.index'});
+                store.setToast({type: 'success', message: "This event was passed"});
+            }
         }
     },
 
     mounted() {
-        //console.log(this.$refs);
-        //console.log(this.$refs.values);
+        //this.checkAvailable();
     },
 
     computed: {
