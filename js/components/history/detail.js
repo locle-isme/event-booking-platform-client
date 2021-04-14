@@ -16,7 +16,7 @@ const HistoryDetail = {
                     </tr>
                     <tr>
                         <td>Event</td>
-                        <td colspan="4"><span class="font-weight-bold">{{event.name}}</span></td>
+                        <td colspan="4"><router-link :to="{name: 'event.agenda', params:{oslug: registration.event.organizer.slug, eslug: registration.event.slug}}" tag="span" class="font-weight-bold text-warning" style="cursor: pointer">{{event.name}}</router-link></td>
                     </tr>
                     <tr>
                         <td>Status</td>

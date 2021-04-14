@@ -2,48 +2,65 @@ const EventAgenda = {
     template:
         `
 <div class="col">
-<div class="card shadow-lg">
-    <div class="card-body m-2">
-        <div class="row justify-content-between">
-            <div class="h4 text-light title" :class="{'bg-success': checkRegistered, 'bg-dark': !checkRegistered}">{{event.name}}</div>
-            <div class="pt-3"><router-link :to="{name:'event.registration', params: {oslug: oslug, eslug: eslug }}"
-                         class="btn btn-outline-primary" id="register">Register
-            </router-link></div>
-        </div>
-        <div class="row mt-3">
-            <div class="blank-time"></div>
-            <div class="flex-grow-1 time">9:00</div>
-            <div class="flex-grow-1 time">11:00</div>
-            <div class="flex-grow-1 time">13:00</div>
-            <div class="flex-grow-1 time">15:00</div>
-        </div>
-        <div v-for="channel in event.channels" class="row border">
-            <div :key="channel.id" class="channel">
-                {{channel.name}}
-            </div>
-            <div class="flex-grow-1">
-                <div v-for="room in channel.rooms" class="d-flex">
-                    <div :key="room.id" class="room">
-                        {{room.name}}
-                    </div>
-                    <div class="d-flex position-relative flex-grow-1">
-                        <router-link v-for="session in room.sessions" :key="session.id"
-                                     :to="{name:'session.detail', params: {sessionId: session.id.toString() }}"
-                                     class="session text-truncate" :style="setStyle(session)" :title="session.title"
-                                     :class="{registered: isRegistered(session)}">{{session.title}}
-                        </router-link>
-                    </div>
+    <div class="card shadow-lg">
+        <div class="card-body m-2">
+            <div class="row justify-content-between">
+                <div class="h4 text-light title" :class="{'bg-success': checkRegistered, 'bg-dark': !checkRegistered}">
+                    {{event.name}}
+                </div>
+                <div class="pt-3">
+                    <router-link :to="{name:'event.registration', params: {oslug: oslug, eslug: eslug }}"
+                                 class="btn btn-outline-primary" id="register">Register
+                    </router-link>
                 </div>
             </div>
+            <template v-for="(day, index) in schedule">
+                <div class="table-schedules" :key="index">
+                    <h5 class="day my-2" style="margin-bottom: 0">{{day}}</h5>
+                    <div class="schedule-time row">
+                        <div class="blank-time"></div>
+                        <div class="flex-grow-1 time">9:00</div>
+                        <div class="flex-grow-1 time">11:00</div>
+                        <div class="flex-grow-1 time">13:00</div>
+                        <div class="flex-grow-1 time">15:00</div>
+                    </div>
+                    <div v-for="channel in event.channels" class="row border-bottom">
+                        <div :key="channel.id" class="channel">
+                            {{channel.name}}
+                        </div>
+                        <div class="flex-grow-1">
+                            <div v-for="room in channel.rooms" class="d-flex">
+                                <div :key="room.id" class="room">
+                                    {{room.name}}
+                                </div>
+                                <div class="d-flex position-relative flex-grow-1">
+                                    <template v-for="session in room.sessions">
+                                        <router-link
+                                                :key="session.id"
+                                                v-if="day == getDate(session.start)"
+                                                :to="{name:'session.detail', params: {sessionId: session.id.toString() }}"
+                                                class="session text-truncate" :style="setStyle(session)"
+                                                :title="session.title"
+                                                :class="{registered: isRegistered(session)}">{{session.title}}
+                                        </router-link>
+                                    </template>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </template>
+
         </div>
     </div>
-</div>
 </div>
     `,
     data() {
         return {
             event: {}, //detail event
-            registration: {} //detail registration of this event
+            registration: {}, //detail registration of this event,
+            schedule: []
         }
     },
 
@@ -65,6 +82,19 @@ const EventAgenda = {
             API.get(`/organizers/${this.oslug}/events/${this.eslug}`)
                 .then(({data}) => {
                     this.event = data;
+                    let sessionTime = data.channels.map(channel => {
+                        return channel.rooms.map(room => {
+                            return room.sessions.map(session => {
+                                let start = this.getDate(session.start);
+                                return start;
+                            });
+                        })
+                    }).flat(Infinity);
+
+                    this.schedule = sessionTime.filter((t, index, arr) => {
+                        return arr.indexOf(t) === index;
+                    });
+
                 })
                 .catch((error) => {
                     this.$router.push({path: '/error/404'});
@@ -110,6 +140,10 @@ const EventAgenda = {
             }
             return false;
         },
+
+        getDate(time) {
+            return new Date(time).toLocaleDateString('en-GB')
+        }
 
 
     },

@@ -130,7 +130,7 @@ const EventRegistration = {
             let eventDate = new Date(this.event.date);
             if (eventDate < currentDay) {
                 this.$router.push({name: 'event.index'});
-                store.setToast({type: 'success', message: "This event was passed"});
+                store.setToast({type: 'danger', message: "This event was passed"});
             }
         }
     },
