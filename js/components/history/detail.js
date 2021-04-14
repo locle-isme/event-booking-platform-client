@@ -16,7 +16,7 @@ const HistoryDetail = {
                     </tr>
                     <tr>
                         <td>Event</td>
-                        <td colspan="4"><router-link :to="{name: 'event.agenda', params:{oslug: registration.event.organizer.slug, eslug: registration.event.slug}}" tag="span" class="font-weight-bold text-warning" style="cursor: pointer">{{event.name}}</router-link></td>
+                        <td colspan="4"><router-link :to="{name: 'event.agenda', params:{oslug: organizer.slug, eslug: event.slug}}" tag="span" class="font-weight-bold text-warning" style="cursor: pointer">{{event.name}}</router-link></td>
                     </tr>
                     <tr>
                         <td>Status</td>
@@ -41,7 +41,7 @@ const HistoryDetail = {
                         <div v-if="workshops.length > 0">
                         <template v-for="session in workshops" :key="session.id">
                                 <router-link class="session-joined font-weight-bold" tag="li"
-                                             :to="{name:'session.detail', params: {oslug: organizer.slug, eslug: event.slug, sessionId: session.id.toString() }}">
+                                             :to="{name:'session.detail', params: {sessionId: session.id.toString() }}">
                                     {{session.title}}
                                 </router-link>
                             </template>
