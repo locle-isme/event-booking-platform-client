@@ -3,8 +3,8 @@ const EventAgenda = {
         `
 <div class="col">
     <div class="card shadow-lg">
-        <div class="card-body m-2">
-            <div class="row justify-content-between">
+        <div class="card-body">
+            <div class="d-flex my-2 flex-wrap justify-content-between">
                 <div class="h4 text-light title" :class="{'bg-success': checkRegistered, 'bg-dark': !checkRegistered}">
                     {{event.name}}
                 </div>
@@ -14,22 +14,21 @@ const EventAgenda = {
                     </router-link>
                 </div>
             </div>
-            <template v-for="(day, index) in schedule">
-                <div class="table-schedules" :key="index">
-                    <h5 class="day my-2" style="margin-bottom: 0">{{day}}</h5>
-                    <div class="schedule-time row">
-                        <div class="blank-time"></div>
-                        <div class="flex-grow-1 time">9:00</div>
-                        <div class="flex-grow-1 time">11:00</div>
-                        <div class="flex-grow-1 time">13:00</div>
-                        <div class="flex-grow-1 time">15:00</div>
+            <template v-for="(scheduleTime, index) in schedule">
+                <div class="table-schedules" :key="index">             
+                    <div class="schedule-time day-detail">
+                        <div class="blank-time"><span class="date my-2">{{scheduleTime}}</span></div>
+                        <div class="time">9:00</div>
+                        <div class="time">11:00</div>
+                        <div class="time">13:00</div>
+                        <div class="time">15:00</div>
                     </div>
-                    <div v-for="channel in event.channels" class="row border-bottom">
+                    <div v-for="channel in event.channels" v-if="isExistSessionInChannel(channel.id, scheduleTime)" class="date-detail">
                         <div :key="channel.id" class="channel">
                             {{channel.name}}
                         </div>
                         <div class="flex-grow-1">
-                            <div v-for="room in channel.rooms" class="d-flex">
+                            <div v-for="room in channel.rooms" v-if="isExistSessionInRoom(room.id, scheduleTime)" class="d-flex">
                                 <div :key="room.id" class="room">
                                     {{room.name}}
                                 </div>
@@ -37,7 +36,7 @@ const EventAgenda = {
                                     <template v-for="session in room.sessions">
                                         <router-link
                                                 :key="session.id"
-                                                v-if="day == getDate(session.start)"
+                                                v-if="scheduleTime == getDate(session.start)"
                                                 :to="{name:'session.detail', params: {sessionId: session.id.toString() }}"
                                                 class="session text-truncate" :style="setStyle(session)"
                                                 :title="session.title"
@@ -143,9 +142,31 @@ const EventAgenda = {
 
         getDate(time) {
             return new Date(time).toLocaleDateString('en-GB')
-        }
+        },
 
+        isExistSessionInRoom(roomId, date) {
+            return this.event.channels.some(channel => {
+                return channel.rooms.some(room => {
+                    return room.id == roomId && room.sessions.some(session => {
+                        return this.getDate(session.start) == date;
+                    })
+                })
+            })
+            // console.log(a, roomId, date);
+            // return true;
+        },
 
+        isExistSessionInChannel(channelId, date) {
+            return this.event.channels.some(channel => {
+                return channel.rooms.some(room => {
+                    return channel.id == channelId && room.sessions.some(session => {
+                        return this.getDate(session.start) == date;
+                    })
+                })
+            })
+            // console.log(a, roomId, date);
+            // return true;
+        },
     },
 
     computed: {

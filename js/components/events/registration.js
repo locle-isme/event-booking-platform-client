@@ -3,9 +3,8 @@ const EventRegistration = {
 <div class="col">
 <div class="card shadow-lg">
     <div class="card-body">
-        <div class="d-flex mt-2 mb-2">
+        <div class="d-flex my-2">
             <div class="h4 bg-dark text-light title">{{event.name}}</div>
-
         </div>
         <div class="d-flex">
             <div v-for="(ticket, index) in tickets" @click="selectTicket(index)" :key="ticket.id"

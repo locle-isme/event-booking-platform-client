@@ -44,14 +44,6 @@
     color: #ffffff !important;
 }
 
-.blank-time {
-    width: 355px;
-}
-
-.time {
-    font-weight: 700;
-    user-select: none;
-}
 
 .channel, .room {
     width: 170px;
@@ -69,7 +61,8 @@
 
 .channel {
     margin-right: 0px;
-    background: #771d60;
+    margin-left: 0px;
+    background: rgba(233, 84, 193, 0.85);
     font-weight: 700;
 }
 
@@ -81,8 +74,8 @@
 .session {
     position: absolute;
     margin: 5px 0px;
-    border: 4px black solid;
-    padding: 6px 4px;
+    border: 2px black solid;
+    padding: 10px 4px;
     border-radius: 4px;
     transition: 300ms;
 }
@@ -212,20 +205,41 @@ a.event-name, a.session, a.logo, a.speaker, a.register {
 }
 
 .table-schedules {
-    width: 100%;
+    overflow-x: auto;
+}
+
+
+.table-schedules > .date-detail {
+    min-width: 1054px;
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 6px 0px;
+    border-bottom: #dee2e6 2px solid !important;
 }
 
 .table-schedules > .schedule-time {
-    display: none;
+    display: flex;
+    flex-wrap: nowrap !important;
+    margin-top: 15px;
 }
 
 .table-schedules:nth-child(2) > .schedule-time {
-    display: flex;
 }
 
-.table-schedules > .day {
-    margin-right: -15px;
-    margin-left: -10px;
+.table-schedules > .schedule-time > .blank-time {
+    min-width: 350px;
+}
+
+.table-schedules > .schedule-time > .blank-time .date{
     color: purple;
     font-weight: 500;
+    line-height: 20px;
+    font-size: 20px;
+
+}
+
+.table-schedules > .schedule-time > .time {
+    min-width: 180px;
+    font-weight: 700;
+    user-select: none;
 }

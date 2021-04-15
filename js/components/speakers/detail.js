@@ -2,8 +2,8 @@ const SpeakerDetail = {
     template:
         `<div class="col">
     <div class="row">
-        <div class="col-3"><img :src="speaker.avatar" class="img-thumbnail" alt=""></div>
-        <div class="col-9">
+        <div class="col-sm-12 col-md-3"><img :src="speaker.avatar" class="img-thumbnail" alt=""></div>
+        <div class="col-sm-12 col-md-9">
             <div class="card shadow-lg">
                 <div class="card-body">
                     <div class="d-flex">
