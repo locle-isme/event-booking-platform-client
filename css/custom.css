@@ -230,7 +230,7 @@ a.event-name, a.session, a.logo, a.speaker, a.register {
     min-width: 350px;
 }
 
-.table-schedules > .schedule-time > .blank-time .date{
+.table-schedules > .schedule-time > .blank-time .date {
     color: purple;
     font-weight: 500;
     line-height: 20px;
@@ -242,4 +242,23 @@ a.event-name, a.session, a.logo, a.speaker, a.register {
     min-width: 180px;
     font-weight: 700;
     user-select: none;
+}
+
+@media (max-width: 991px) {
+    #bd-versions {
+        min-width: 160px !important;
+        padding: 0.9575rem 2.8rem !important;
+    }
+
+    .navbar .dropdown.show .dropdown-menu, .navbar .dropdown .dropdown-menu {
+        height: auto !important;
+    }
+
+    .dropdown-divider {
+        border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .navbar .dropdown-menu .dropdown-item {
+        color: rgba(255, 255, 255, 0.85999);
+    }
 }

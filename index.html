@@ -8,19 +8,30 @@
     <title>Event Booking Platform</title>
     <!-- fonts -->
     <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/material-dashboard.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/material-dashboard@2.1.0/assets/css/material-dashboard.css">
     <link rel="stylesheet" href="css/custom.css">
+
+<!--
+     <script src="https://cdn.jsdelivr.net/npm/material-dashboard@2.1.0/assets/js/core/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/material-dashboard@2.1.0/assets/js/core/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/material-dashboard@2.1.0/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/material-dashboard@2.1.0/assets/js/core/bootstrap-material-design.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/material-dashboard@2.1.0/assets/js/material-dashboard.js"></script>
+-->
+
 </head>
 <body>
 <div id="app">
     <app-header></app-header>
     <div class="container" style="padding-top: 100px;padding-bottom: 50px">
         <div class="row">
-                <router-view></router-view>
+            <router-view></router-view>
         </div>
     </div>
     <transition name="right2left">
@@ -31,9 +42,10 @@
 </div>
 <script src="js/vendor/vue.min.js"></script>
 <script src="js/vendor/vue-router.min.js"></script>
-<script src="js/vendor/axios.min.js"></script>
 <script src="js/vendor/jquery.min.js"></script>
-<script src="js/vendor/bootstrap.min.js"></script>
+<script src="js/vendor/popper.min.js"></script>
+<script src="js/vendor/bootstrap-material-design.min.js"></script>
+<script src="js/vendor/axios.min.js"></script>
 <script src="js/config/config.js"></script>
 <script src="js/config/store.js"></script>
 <script src="js/components/app-header.js"></script>
