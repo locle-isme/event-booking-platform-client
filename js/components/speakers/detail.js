@@ -13,7 +13,7 @@ const SpeakerDetail = {
                         <div class="session-w">Name:</div>
                         <div>{{speaker.name}}</div>
                     </div>
-                    <div class="d-flex mb-2">
+                    <div class="d-flex flex-wrap mb-2">
                         <div class="session-w">Social linking:</div>
                         <a target="_blank" :href="speaker.social_linking">{{speaker.social_linking}}</a>
                     </div>

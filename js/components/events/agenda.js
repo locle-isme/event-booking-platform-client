@@ -5,9 +5,11 @@ const EventAgenda = {
     <div class="card shadow-lg">
         <div class="card-body">
             <div class="d-flex my-2 flex-wrap justify-content-between">
-                <div class="h4 text-light title" :class="{'bg-success': checkRegistered, 'bg-dark': !checkRegistered}">
+                <div class="pt-3">
+                <div class="text-light title" :class="{'bg-success': checkRegistered, 'bg-dark': !checkRegistered}">
                     {{event.name}}
                 </div>
+</div>
                 <div class="pt-3">
                     <router-link :to="{name:'event.registration', params: {oslug: oslug, eslug: eslug }}"
                                  class="btn btn-outline-primary" id="register">Register

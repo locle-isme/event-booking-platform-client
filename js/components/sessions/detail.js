@@ -6,7 +6,7 @@ const SessionDetail = {
             <div class="d-flex">
                 <div class="h4 text-light title title-session">{{session.title}}</div>
             </div>
-            <div class="d-flex session-description text-light title">
+            <div class="d-flex session-description text-light description-session">
                 {{session.description}}
             </div>
             <div class="d-flex my-2">
