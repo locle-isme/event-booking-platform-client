@@ -1,5 +1,5 @@
-const FULLNAME = '10_fullname';
-const TOKEN = '10_token';
+const FULL_NAME = 'store_name';
+const TOKEN = 'store_token';
 
 const store = {
 
@@ -8,7 +8,7 @@ const store = {
      */
 
     auth: {
-        fullName: localStorage.getItem(FULLNAME) || null,
+        FULL_NAME: localStorage.getItem(FULL_NAME) || null,
         token: localStorage.getItem(TOKEN) || null,
     },
 
@@ -27,7 +27,7 @@ const store = {
      */
     isAuth() {
         const {auth} = this;
-        return (auth.fullName && auth.token) ? true : false;
+        return !!(auth.fullName && auth.token);
     },
 
     /**
@@ -38,10 +38,10 @@ const store = {
      */
     setAuth({lastname, firstname, token}) {
         const {auth} = this;
-        const fullName =`${lastname}  ${firstname}`;
-        auth.fullName = firstname;
+        const FULL_NAME =`${lastname}  ${firstname}`;
+        auth.FULL_NAME = firstname;
         auth.token = token;
-        localStorage.setItem(FULLNAME, firstname);
+        localStorage.setItem(FULL_NAME, firstname);
         localStorage.setItem(TOKEN, token);
     },
 
@@ -58,9 +58,9 @@ const store = {
      */
     removeAuth() {
         const {auth} = this;
-        auth.fullName = null;
+        auth.FULL_NAME = null;
         auth.token = null;
-        localStorage.removeItem(FULLNAME);
+        localStorage.removeItem(FULL_NAME);
         localStorage.removeItem(TOKEN);
     },
 

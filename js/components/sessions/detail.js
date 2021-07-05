@@ -1,15 +1,15 @@
 const SessionDetail = {
     template:
-        `<div class="col">
+        `<div class="session-detail col">
     <div class="card shadow-lg">
         <div class="card-body">
             <div class="d-flex">
-                <div class="h4 text-light title title-session">{{session.title}}</div>
+                <div class="title title-session">{{session.title}}</div>
             </div>
-            <div class="d-flex session-description text-light description-session">
+            <div class="d-flex description">
                 {{session.description}}
             </div>
-            <div class="d-flex my-2">
+            <div class="d-flex my-2 field-box">
                 <div class="session-w">Speakers:</div>
                 <div v-if="session.speakers.length !== 0" class="d-flex flex-column">
                     <template v-for="speaker in session.speakers">
@@ -21,19 +21,19 @@ const SessionDetail = {
                     </template>
                 </div>
                </div>
-            <div class="d-flex mb-2">
+            <div class="d-flex mb-2 field-box">
                 <div class="session-w">Start:</div>
                 <div>{{session.start | date_time}}</div>
             </div>
-            <div class="d-flex mb-2">
+            <div class="d-flex mb-2 field-box">
                 <div class="session-w">End:</div>
                 <div>{{session.end | date_time}}</div>
             </div>
-            <div class="d-flex mb-2">
+            <div class="d-flex mb-2 field-box">
                 <div class="session-w">Type:</div>
                 <div class="text-capitalize">{{session.type}}</div>
             </div>
-            <div v-if="session.type =='workshop'" class="d-flex mb-2">
+            <div v-if="session.type =='workshop'" class="d-flex mb-2 field-box">
                 <div class="session-w">Cost:</div>
                 <div>{{session.cost}}.-</div>
             </div>

@@ -1,12 +1,25 @@
+body {
+    background: #232526; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #414345, #232526); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
 .event {
+    transition: 300ms;
     box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.4) !important;
+    margin-bottom: 3rem !important;
+}
+
+
+.event .card-body {
+    padding: 1.5rem 20px;
 }
 
 .event:hover, .ticket:hover:not(.disabled) {
     cursor: pointer;
     transition: 300ms;
-    transform: scale(1.01);
-    box-shadow: 1px 1px 5px 1px rgba(0, 125, 255, 0.4) !important;
+    transform: scale(1.02);
+    box-shadow: 1px 1px 5px 1px rgba(255, 44, 80, 0.8) !important;
 }
 
 
@@ -44,8 +57,40 @@
     color: #ffffff !important;
 }
 
+.card {
+    background: #f3f3f3;
+    border-radius: 0 !important;
+}
 
-.channel, .room {
+.agenda .title, .registration .title, .session-detail .title, .speaker-detail .title {
+    padding: 6px 8px 6px 0;
+    font-size: 1.2em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 300ms;
+}
+
+.agenda .title:not(.type-success):hover, .registration .title:hover, .agenda .title.type-success, .session-detail .title:hover, .speaker-detail .title:hover {
+    padding: 6px 8px 6px 8px;
+    transform: scale(1.1);
+    font-weight: bold;
+}
+
+.agenda .title:not(.type-success):hover, .registration .title:hover {
+    background: #000;
+    color: #fff;
+}
+
+.agenda .title.type-success {
+    color: #49c264;
+}
+
+.agenda .title.type-success:hover {
+    background: #49c264;
+    color: #fff;
+}
+
+.agenda .channel, .agenda .room {
     width: 170px;
     margin: 5px;
     padding: 10px 15px;
@@ -55,49 +100,62 @@
     text-align: center;
     color: #fff;
     text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
-    border: 2px black solid;
-    border-radius: 4px;
 }
 
 .channel {
-    margin-right: 0px;
-    margin-left: 0px;
-    background: rgba(233, 84, 193, 0.85);
+    font-size: 1.2em;
     font-weight: 700;
+    margin-right: 0;
+    margin-left: 0;
+    background: #EB3349;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #F45C43, #EB3349);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #F45C43, #EB3349); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .room {
-    background: #76af8f;
+    font-size: 1.1em;
+    background: #16222A;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #3A6073, #16222A);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #3A6073, #16222A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     font-weight: 500;
 }
 
 .session {
     position: absolute;
-    margin: 5px 0px;
-    border: 2px black solid;
-    padding: 10px 4px;
-    border-radius: 4px;
+    margin-top: 5px;
+    font-size: 1.1em;
+    /*box-shadow: #000 0 0 0 2px inset;*/
+    box-shadow: 1px 1px 5px 1px #000 !important;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
     transition: 300ms;
 }
 
 .session:hover {
-    background: #1c7430;
+    background: #11998e;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #38ef7d, #11998e);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #38ef7d, #11998e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     color: #fff !important;
 }
 
 .session.registered {
-    border-color: #1c7430;
+    box-shadow: 1px 1px 5px 1px #1c7430 !important;
     color: #1c7430;
 }
 
 
 .ticket {
+    transition: 300ms;
     margin: 10px 5px;
     border: 2px #ffffff solid;
     padding: 20px 10px;
-    border-radius: 10px;
-    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.4);
+    background: #fff;
+    overflow: hidden;
+    /*box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;*/
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
     cursor: pointer;
+    font-size: 1.1em;
 }
 
 
@@ -120,22 +178,42 @@
     color: #6c757d !important;
 }
 
+.registration .ticket label, .registration .additional label {
+    color: #000;
+}
+
+.registration .ticket label {
+    font-size: 1.1em;
+}
+
+.registration .ticket:hover, .registration .additional:hover label, .registration .ticket:hover label {
+    font-weight: 500;
+}
+
+.registration .additional {
+    transition: 300ms;
+}
+
+.registration .box-additional .sub-title {
+    color: #000;
+    font-size: 1.2em;
+    font-weight: bolder;
+    padding: 4px 0;
+}
+
 
 .detail-cost {
-
+    font-size: 1.1em;
     font-weight: 500;
     width: 220px;
-    margin: 8px 0px;
+    margin: 8px 0;
 }
+
 
 .custom-control-label {
     font-weight: 500;
 }
 
-.session-description {
-    background: rgb(99 41 107);
-    margin: 10px 0px;
-}
 
 .session-w {
     min-width: 130px;
@@ -146,21 +224,85 @@ a.event-name, a.session, a.logo, a.speaker, a.register {
     text-decoration: none;
 }
 
-.title {
-    padding: 10px 5px;
-    font-size: 18px;
-    font-weight: 600;
-    border-radius: 4px;
+.event-name {
+    font-size: 1.4em !important;
+    font-weight: bolder;
 }
 
-.description-session{
-    padding: 10px 8px;
-    border-radius: 4px;
+
+.session-detail .description, .speaker-detail .description {
+    color: #fff;
+    background: rgb(99 41 107);
+    margin: 10px 0;
+    padding: 10px;
     text-align: justify;
 }
 
-.title-session {
+.session-detail .title-session {
+    color: #355e71;
+}
+
+.session-detail .title-session:hover {
+    transform: scale(1.1);
     background: #355e71;
+    color: #fff;
+}
+
+.session-detail .field-box {
+    font-size: 1.05em;
+    color: #000;
+}
+
+.session-detail .field-box .speaker {
+    color: #f52929;
+    font-weight: bolder;
+    transition: 300ms;
+}
+
+.session-detail .field-box .speaker:hover {
+    transform: scale(1.2);
+}
+
+.speaker-detail .img-thumbnail {
+    border-radius: 0;
+}
+
+.speaker-detail .title {
+    font-size: 1.4em;
+    padding: 6px 0;
+    margin-bottom: 1.8rem;
+}
+
+.speaker-detail .title:hover {
+    padding-left: 8px;
+    padding-right: 8px;
+    background: #0b3251;
+    color: #fff;
+}
+
+.speaker-detail .description {
+    background: #0b3251;
+}
+
+.speaker-detail .box-session-joined {
+
+}
+
+.speaker-detail .session-joined {
+    display: inline-block;
+    cursor: pointer;
+    transition: 300ms;
+    border-radius: 50px;
+    padding: 4px 8px;
+    margin-bottom: 7px;
+    margin-right: 8px;
+    background: #fff0f5;
+    color: #000;
+}
+
+.speaker-detail .session-joined:hover {
+    background: #1075af;
+    color: #fff;
 }
 
 .custom-control-label {
@@ -182,15 +324,6 @@ a.event-name, a.session, a.logo, a.speaker, a.register {
     background: #248290;
     border-color: #248290;
     color: #fff;
-}
-
-.session-joined {
-    cursor: pointer;
-    color: rgba(16, 117, 175, 0.7);
-}
-
-.session-joined:hover {
-    color: #1075af;
 }
 
 
@@ -249,6 +382,7 @@ a.event-name, a.session, a.logo, a.speaker, a.register {
 .table-schedules > .schedule-time > .time {
     min-width: 180px;
     font-weight: 700;
+    font-size: 1.1em;
     user-select: none;
 }
 

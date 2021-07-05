@@ -1,12 +1,12 @@
 const EventAgenda = {
     template:
         `
-<div class="col">
+<div class="col agenda">
     <div class="card shadow-lg">
         <div class="card-body">
             <div class="d-flex my-2 flex-wrap justify-content-between">
                 <div class="pt-3">
-                <div class="text-light title" :class="{'bg-success': checkRegistered, 'bg-dark': !checkRegistered}">
+                <div class="title" :class="{'type-success': checkRegistered}">
                     {{event.name}}
                 </div>
 </div>

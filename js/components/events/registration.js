@@ -1,10 +1,10 @@
 const EventRegistration = {
     template: `
-<div class="col">
+<div class="col registration">
 <div class="card shadow-lg">
     <div class="card-body">
         <div class="d-flex my-2">
-            <div class="h4 bg-dark text-light title">{{event.name}}</div>
+            <div class="title">{{event.name}}</div>
         </div>
         <div class="d-flex">
             <div v-for="(ticket, index) in tickets" @click="selectTicket(index)" :key="ticket.id"
@@ -25,9 +25,9 @@ const EventRegistration = {
                 <div class="ticket-cost">{{ticket.cost}}.-</div>
             </div>
         </div>
-        <div class="d-flex flex-column mt-4">
-            <div class="h5">Select additional you want to book:</div>
-            <div v-for="session in workshops" :key="session.id" class="form-check mt-2">
+        <div class="box-additional d-flex flex-column mt-4">
+            <div class="sub-title">Select additional you want to book:</div>
+            <div v-for="session in workshops" :key="session.id" class="additional form-check mt-2">
                 <label class="form-check-label" :for="'ss' + session.id">
                     <input v-model="form.session_ids" :value="session.id" type="checkbox" class="form-check-input"
                            :id="'ss' + session.id">
