@@ -1,4 +1,5 @@
 # Web Technologies Events Management - For Attendee
+Demo: https://locle-isme.github.io/event-booking-platform-client/
 ![](https://i.imgur.com/R0o9Zp7.png)
 # About
 

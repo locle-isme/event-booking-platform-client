@@ -44,7 +44,9 @@ const UserLogin = {
          * login user
          */
         login() {
-            API.post('/login', this.form)
+            const {username, password} = this.form;
+            const url = `login?username=${username}&password=${password}`;
+            API.post(url) //'login', this.form
                 .then(({data}) => {
                     //console.log(data);
                     store.setToast({type: 'success', message: 'Login success'});

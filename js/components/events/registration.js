@@ -102,11 +102,19 @@ const EventRegistration = {
                 })
         },
 
+
+        serialize(session_ids) {
+            return session_ids.map(ss_id => {
+                return `session_ids[]=${ss_id}`;
+            }).join("&");
+        },
         /**
          * send form data into server to register
          */
         purchase() {
-            API.post(`/organizers/${this.oslug}/events/${this.eslug}/registration?token=${store.getAuth().token}`, this.form)
+            const {ticket_id, session_ids} = this.form;
+            const url = `/organizers/${this.oslug}/events/${this.eslug}/registration?token=${store.getAuth().token}&ticket_id=${ticket_id}&${this.serialize(session_ids)}`;
+            API.post(url) //`/organizers/${this.oslug}/events/${this.eslug}/registration?token=${store.getAuth().token}`, this.form
                 .then(({data}) => {
                     store.setToast({type: 'success', message: data.message});
                     this.$router.push({name: 'event.agenda', params: {oslug: this.oslug, eslug: this.eslug}});
@@ -124,7 +132,7 @@ const EventRegistration = {
             }
         },
 
-        checkAvailable(){
+        checkAvailable() {
             let currentDay = new Date();
             let eventDate = new Date(this.event.date);
             if (eventDate < currentDay) {

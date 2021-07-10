@@ -1,6 +1,6 @@
 const AppHeader = {
     template: `
-         <nav class="navbar navbar-expand-md navbar-dark flex-md-row fixed-top bg-dark align-items-md-center align-items-start" style="border-bottom: 2px rgba(62,62,62,0.5) solid">
+         <nav class="navbar navbar-expand-md navbar-dark flex-md-row fixed-top bg-dark align-items-md-center align-items-start nav-header">
     <router-link :to="{name:'event.index'}" class="navbar-brand d-none d-md-block" href="">Event Booking Platform</router-link>
 <!--    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"-->
 <!--            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">-->

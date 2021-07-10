@@ -1,5 +1,5 @@
 const HistoryDetail = {
-    template: `<div class="col">
+    template: `<div class="col history-detail">
     <div class="card">
         <div class="card-header bg-info"><span class="text-light h4">Detail registration</span></div>
     </div>

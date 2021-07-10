@@ -4,6 +4,15 @@ body {
     background: linear-gradient(to left, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+.nav-header {
+    height: 50px;
+    border-bottom: 2px rgba(62, 62, 62, 0.5) solid;
+}
+
+.nav-header .nav-link {
+    background: unset !important;
+}
+
 .event {
     transition: 300ms;
     box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.4) !important;
@@ -107,15 +116,15 @@ body {
     font-weight: 700;
     margin-right: 0;
     margin-left: 0;
-    background: #EB3349;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to left, #F45C43, #EB3349);  /* Chrome 10-25, Safari 5.1-6 */
+    background: #EB3349; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #F45C43, #EB3349); /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to left, #F45C43, #EB3349); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .room {
     font-size: 1.1em;
-    background: #16222A;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to left, #3A6073, #16222A);  /* Chrome 10-25, Safari 5.1-6 */
+    background: #16222A; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #3A6073, #16222A); /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to left, #3A6073, #16222A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     font-weight: 500;
 }
@@ -125,7 +134,7 @@ body {
     margin-top: 5px;
     font-size: 1.1em;
     /*box-shadow: #000 0 0 0 2px inset;*/
-    box-shadow: 1px 1px 5px 1px #000 !important;
+    box-shadow: 1px 1px 1px 1px #000 !important;
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 5px;
@@ -133,15 +142,16 @@ body {
 }
 
 .session:hover {
-    background: #11998e;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to left, #38ef7d, #11998e);  /* Chrome 10-25, Safari 5.1-6 */
+    background: #11998e; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #38ef7d, #11998e); /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to left, #38ef7d, #11998e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     color: #fff !important;
 }
 
 .session.registered {
-    box-shadow: 1px 1px 5px 1px #1c7430 !important;
+    box-shadow: 1px 1px 1px 1px #1c7430 !important;
     color: #1c7430;
+    font-weight: 500;
 }
 
 
@@ -288,7 +298,9 @@ a.event-name, a.session, a.logo, a.speaker, a.register {
 
 }
 
-.speaker-detail .session-joined {
+
+
+.speaker-detail .session-joined , .history-detail  .session-joined{
     display: inline-block;
     cursor: pointer;
     transition: 300ms;
@@ -296,11 +308,11 @@ a.event-name, a.session, a.logo, a.speaker, a.register {
     padding: 4px 8px;
     margin-bottom: 7px;
     margin-right: 8px;
-    background: #fff0f5;
+    background: rgba(255, 93, 86, 0.63);
     color: #000;
 }
 
-.speaker-detail .session-joined:hover {
+.speaker-detail .session-joined:hover, .history-detail  .session-joined:hover{
     background: #1075af;
     color: #fff;
 }

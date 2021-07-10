@@ -70,8 +70,14 @@ const UserRegister = {
                 username: '',
                 email: '',
                 password: ''
+
+                /*lastname: 'XYZ',
+                firstname: 'Mr',
+                username: 'attendee',
+                email: 'test@gmail.com',
+                password: '123456Abc'*/
             },
-            rePassword: '',
+            rePassword: '123456Abc',
             arrayError: {}
 
         }
@@ -136,7 +142,7 @@ const UserRegister = {
         isValidPassword(password) {
             if (!password) return false;
             if (password.length < 8) return false;
-            let isLowerCase = password.split("").every(c => c == c.toLowerCase());
+            let isLowerCase = password.split("").every(c => c === c.toLowerCase());
             return !isLowerCase;
         },
 
@@ -145,7 +151,7 @@ const UserRegister = {
          * check empty object
          */
         isObjectEmpty(obj) {
-            return Object.keys(obj).length == 0;
+            return Object.keys(obj).length === 0;
         },
 
         /**
@@ -153,7 +159,8 @@ const UserRegister = {
          */
         register() {
             if (!this.checkValidation()) return;
-            API.post('/register', this.form)
+            const url = `/register?${this.serialize(this.form)}`;
+            API.post(url) //'/register', this.form
                 .then(({data}) => {
                     store.setToast({type: 'success', message: 'Register success'});
                     this.$router.push({name: 'user.login'});
@@ -165,6 +172,15 @@ const UserRegister = {
                     // store.setToast({type: 'danger', message: response.data.message});
                 })
         },
+
+        serialize(obj) {
+            let str = [];
+            for (let p in obj)
+                if (obj.hasOwnProperty(p)) {
+                    str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                }
+            return str.join("&");
+        }
 
 
     },

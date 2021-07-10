@@ -8,7 +8,7 @@ const store = {
      */
 
     auth: {
-        FULL_NAME: localStorage.getItem(FULL_NAME) || null,
+        fullName: localStorage.getItem(FULL_NAME) || null,
         token: localStorage.getItem(TOKEN) || null,
     },
 
@@ -38,8 +38,7 @@ const store = {
      */
     setAuth({lastname, firstname, token}) {
         const {auth} = this;
-        const FULL_NAME =`${lastname}  ${firstname}`;
-        auth.FULL_NAME = firstname;
+        auth.fullName = `${lastname}  ${firstname}`;
         auth.token = token;
         localStorage.setItem(FULL_NAME, firstname);
         localStorage.setItem(TOKEN, token);
@@ -58,7 +57,7 @@ const store = {
      */
     removeAuth() {
         const {auth} = this;
-        auth.FULL_NAME = null;
+        auth.fullName = null;
         auth.token = null;
         localStorage.removeItem(FULL_NAME);
         localStorage.removeItem(TOKEN);
